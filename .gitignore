@@ -131,4 +131,5 @@ dmypy.json
 dask-worker-space/
 
 DS_Store
-dask-worker-space
+
+data/
