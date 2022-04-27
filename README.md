@@ -63,6 +63,12 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
   - Most runs will push the given memory to its limit, and sometimes past
   - We have tried to implement aggressive memory recovery through deletion of objects and garbage collection 
 
+## Future Work
 
+suggested ways to expand this work
+
+## Contributing
+
+Code of conduct, access, API, etc
 
 
