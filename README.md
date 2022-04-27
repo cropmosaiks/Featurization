@@ -71,6 +71,6 @@ suggested ways to expand this work
 
 ## Contributing
 
-Code of conduct, access, API, etc
+Code of conduct, access, API, issues, etc
 
 
