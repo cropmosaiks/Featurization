@@ -25,26 +25,34 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
 
 ## Notebooks
 
-With access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). In general, all steps are as follows: equal angle versus equal area is only applicable for zambia 
+With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). An overview of the steps are as follows: 
 
-- Create a grid of points or load a file containg points that you wish to featurize 
-  - One point represents a 0.01 by 0.01 degree grid cell that will be featurized 
-    - This is roughly 1 km<sup>2</sup> (exact area varies by geographic location)
-    - This means a user supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
-  - Grid creation can be done directly in the notebook
+- Create a uniform grid of points over the region of interest, or load a file containg the pre-produced latitude and longitude points to featurize 
+  - Grid creation executed directly in the notebook:
     - User selects a country or region and a grid will be created
     - User can supply geometry or a country code can be specified to use the `geopandas` shapefiles
+    - For gridding the country of Zambia specifically, a user has two options: `equal angle` cells versus `equal area` grid cells
+      - `equal angle` grids are produced using the latitude/longitude geodetic coordinate reference system, EPSG 4326, which is based on Earth's center of mass
+        - results in each point representing a 0.01 by 0.01 degree grid cell that will be featurized 
+        - This is roughly 1 km<sup>2</sup> (exact area varies by geographic location)
+        - This means a pre-processed, user-supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
+      - `equal area` grids are produced using the local coordinate reference system for the region of interest
+        - The local EPSG for the country of Zambia is the defualt, but the relevant EPSG for another region of interest may be supplied by the user 
 - Select a satellite
-  - `landsat-8-c2-l2` or `sentinel-2-l2a`
+  - `landsat-8-c2-l2`
+  - `sentinel-2-l2a`
 - Select the desired number of features
-  - Defaults to 1000
+  - Defaults to 1000, which has resulted in excellent model performance for our project's goals
+  - Increasing the number of features increases computational cost and the time it takes to execute the notebook
 - Select the relevant bands 
   - Naming conventions are unique to each satellites)
 - Select a time period to featurize
-  - Constrained by Satellite mission timeline
+  - Constrained by satellite mission timeline:
+    - (temporal coverage = February 2013 - present)
+    - (temporal coverage = June 2015 - present)
 - Run the notebook in full
   - The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
-    - For example, trying to do too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
+    - For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
 
 All of the above options can be configured in our featurization notebook, `rc_featurization.ipynb`, the primary notebook of this repository. Following these selections, the notebook can be run in full with the resulting workflow of:
 
@@ -58,7 +66,7 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 
 ## Constraints
 
-- MPC Hub persistent storagee 
+- MPC Hub persistent storage 
   - Limited to 15 gigbytes (with access to large temporary storage - ~200 gigbytes within a single session)
   - Exceeding storage limits can cause your environment to not load on the next session
   - Download output files and delete from the hub regularly
@@ -70,7 +78,7 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 
 ## Future Work
 
-suggested ways to expand this work
+paste from tech doc the suggested ways to expand this work when we are done with it
 
 ## Contributing
 
