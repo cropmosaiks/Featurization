@@ -6,7 +6,10 @@ The featurization repository contains code for proccessing satellite imagery by 
 
 ## Datasets
 
-Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). 
+Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). These satellites were selected for two primary reasons:\
+1. Ideal temporal coverage that overlaps with our crop yield data for the country of Zambia, which allows us to geospatially and temporally join satelite feature data with crop yields to execute a supervised machine learning approach (see the Modeling repository for more information)\
+2. Existing satellite image archives in the MPC STAC, which allows users to import the images straight into the notebook with our existing\
+These satellites provide options for different band combinations, spectral resolutions, and temporal cycles (meaning the time intervals between passes over the country of Zambia). Additionally, these satellites can be used in combination for the years in which they overlap.
 
 ## Requirements 
 
@@ -16,17 +19,17 @@ Currently this code is adapted to use two satellites, [Landsat 8](https://planet
 
 ## Getting Started
 
-The fastest way to get started is to sign up for a free account with [MPC Hub](https://planetarycomputer.microsoft.com/docs/overview/environment/). With an account, a user is given access to cloud based virtual computing with pre-configured and managed environments. With several options to choose from it is important to select the `GPU - PyTorch` option. This has a longer startup time, but is neccessary for the way our convolutional model is configured and in the end, the GPU will speed up the computation. 
+The fastest way to get started is to sign up for a free account with [MPC Hub](https://planetarycomputer.microsoft.com/docs/overview/environment/). This process includes a request form, and approval might take 24 hours or more. With an account, a user is given access to cloud-based virtual computing with pre-configured and managed python environments. With several options to choose from, it is important to select the `GPU - PyTorch` option to execute these notebooks. This has a longer startup time than other options, but is neccessary for the way our convolutional model is configured. In the end, the GPU will speed up the computation compared to the CPU options.
 
-This repo can be cloned into the root directory of the MPC Hub. With the code and the correct environment, several decisions need to be made. These decisions are described in detail below. 
+This repository can be cloned into the root directory of the MPC Hub. Within these notebooks several decisions need to be made in order to pull in data and process the features for the timeline and specific analyses that fits the user's needs. These decisions are described in detail below.
 
 ## Notebooks
 
-With access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). In general the steps are as follows:
+With access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). In general, all steps are as follows: equal angle versus equal area is only applicable for zambia 
 
 - Create a grid of points or load a file containg points that you wish to featurize 
   - One point represents a 0.01 by 0.01 degree grid cell that will be featurized 
-    - This is roughly 1 km<sup>2</sup> (exact area varies by geograhpic location)
+    - This is roughly 1 km<sup>2</sup> (exact area varies by geographic location)
     - This means a user supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
   - Grid creation can be done directly in the notebook
     - User selects a country or region and a grid will be created
@@ -56,7 +59,7 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 ## Constraints
 
 - MPC Hub persistent storagee 
-  - Limited to 15 gb (with access to large temporary storage - ~200 GB within a single session)
+  - Limited to 15 gigbytes (with access to large temporary storage - ~200 gigbytes within a single session)
   - Exceeding storage limits can cause your environment to not load on the next session
   - Download output files and delete from the hub regularly
 - MPC compute power
