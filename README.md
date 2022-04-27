@@ -18,28 +18,30 @@ Currently this code is adapted to use two satellites, [Landsat 8](https://planet
 
 The fastest way to get started is to sign up for a free account with [MPC Hub](https://planetarycomputer.microsoft.com/docs/overview/environment/). With an account, a user is given access to cloud based virtual computing with pre-configured and managed environments. With several options to choose from it is important to select the `GPU - PyTorch` option. This has a longer startup time, but is neccessary for the way our convolutional model is configured and in the end, the GPU will speed up the computation. 
 
-With access, a user has several options to begin creating their Random Convolutional Features (RCFs). In general the steps are as follows:
-
-1. Create a grid of points or load a file containg points that you wish to featurize 
-- One point represents a 0.01 by 0.01 degree grid cell that will be featurized 
-  - This is roughly 1 km<sup>2</sup> (exact area varies by geograhpic location)
-  - This means a user supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
-- Grid creation can be done directly in the notebook
-  - User selects a country or region and a grid will be created
-  - User can supply geometry or a country code can be specified to use the `geopandas` shapefiles
-2. Select a satellite
-- `landsat-8-c2-l2` or `sentinel-2-l2a`
-3. Select the desired number of features
-- Defaults to 1000
-4. Select the relevant bands 
-- Naming conventions are unique to each satellites)
-5. Select a time period to featurize
-- Constrained by Satellite mission timeline
-6. Run the notebook in full
-- The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
-  - For example, trying to do too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
+This repo can be cloned into the root directory of the MPC Hub. With the code and the correct environment, several decisions need to be made. These decisions are described in detail below. 
 
 ## Notebooks
+
+With access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). In general the steps are as follows:
+
+- Create a grid of points or load a file containg points that you wish to featurize 
+  - One point represents a 0.01 by 0.01 degree grid cell that will be featurized 
+    - This is roughly 1 km<sup>2</sup> (exact area varies by geograhpic location)
+    - This means a user supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
+  - Grid creation can be done directly in the notebook
+    - User selects a country or region and a grid will be created
+    - User can supply geometry or a country code can be specified to use the `geopandas` shapefiles
+- Select a satellite
+  - `landsat-8-c2-l2` or `sentinel-2-l2a`
+- Select the desired number of features
+  - Defaults to 1000
+- Select the relevant bands 
+  - Naming conventions are unique to each satellites)
+- Select a time period to featurize
+  - Constrained by Satellite mission timeline
+- Run the notebook in full
+  - The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
+    - For example, trying to do too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
 
 All of the above options can be configured in our featurization notebook, `rc_featurization.ipynb`, the primary notebook of this repository. Following these selections, the notebook can be run in full with the resulting workflow of:
 
