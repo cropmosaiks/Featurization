@@ -6,9 +6,9 @@ The featurization repository contains code for proccessing satellite imagery by 
 
 ## Datasets
 
-Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). These satellites were selected for two primary reasons:\
-1. Ideal temporal coverage that overlaps with our crop yield data for the country of Zambia, which allows us to geospatially and temporally join satelite feature data with crop yields to execute a supervised machine learning approach (see the Modeling repository for more information)\
-2. Existing satellite image archives in the MPC STAC, which allows users to import the images straight into the notebook with our existing\
+Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). These satellites were selected for two primary reasons:
+1. Ideal temporal coverage that overlaps with our crop yield data for the country of Zambia [TC: I think this README can do a better job describing the value of featurization generally versus the use case of features for Zambian crop yield prediction. This repo is useful far beyond your application, but if people don't know that this was a specific project piece and that you're pulling it out to release just as a featurization step, it's confusing to understand how this relates to other users more broadly versus what is customized for your application.], which allows us to geospatially and temporally join satelite feature data with crop yields to execute a supervised machine learning approach (see the Modeling repository [TC: anytime you mention another repo you should link directly to it] for more information)
+2. Existing satellite image archives in the MPC STAC, which allows users to import the images straight into the notebook with our existing [TC: ?? this sentence makes no sense...]
 These satellites provide options for different band combinations, spectral resolutions, and temporal cycles (meaning the time intervals between passes over the country of Zambia). Additionally, these satellites can be used in combination for the years in which they overlap.
 
 ## Requirements 
@@ -19,13 +19,13 @@ These satellites provide options for different band combinations, spectral resol
 
 ## Getting Started
 
-The fastest way to get started is to sign up for a free account with [MPC Hub](https://planetarycomputer.microsoft.com/docs/overview/environment/). This process includes a request form, and approval might take 24 hours or more. With an account, a user is given access to cloud-based virtual computing with pre-configured and managed python environments. With several options to choose from, it is important to select the `GPU - PyTorch` option to execute these notebooks. This has a longer startup time than other options, but is neccessary for the way our convolutional model is configured. In the end, the GPU will speed up the computation compared to the CPU options.
+The fastest way to get started is to sign up for a free account with [MPC Hub](https://planetarycomputer.microsoft.com/docs/overview/environment/). This process includes a request form, and approval might take 24 hours or more. With an account, a user is given access to cloud-based virtual computing with pre-configured and managed Python environments. With several options to choose from, it is important to select the `GPU - PyTorch` option to execute these notebooks. This has a longer startup time than other options, but is neccessary for the way our convolutional model is configured. In the end, the GPU will speed up the computation compared to the CPU options.
 
 This repository can be cloned into the root directory of the MPC Hub. Within these notebooks several decisions need to be made in order to pull in data and process the features for the timeline and specific analyses that fits the user's needs. These decisions are described in detail below.
 
 ## Notebooks
 
-With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). An overview of the steps are as follows: 
+With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs) [TC: The modeling repo actually did a better job explaining and giving context for RCFs than this one does. Please port over language and link to the paper etc to help users understand what this featurization is]. An overview of the steps are as follows: 
 
 - Create a uniform grid of points over the region of interest, or load a file containg the pre-produced latitude and longitude points to featurize 
   - Grid creation executed directly in the notebook:
