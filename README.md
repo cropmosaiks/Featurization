@@ -89,7 +89,7 @@ This Featurization repository is designed to guide a user through processing sat
 
 ## Contributing
 
-This project was completed on June 9th, 2022, but suggestions for improvements to the code or documentation is welcome and encouraged. Please submit questions, comments, or code via issues or pull requests on either of the repositories. To correspond with the data scientists who produced these materials, please see their personal GitHub accounts at the bottom of the organization's README and feel free to contact them via email.
+This project was completed on June 9th, 2022, but suggestions for improvements to the code or documentation is welcome and encouraged. Please submit questions, comments, or code via issues or pull requests on either of the repositories. To correspond with the data scientists who produced these materials that extend the MOSAIKS approach, please see their personal GitHub accounts at the bottom of the organization's README and feel free to contact them via email.
 
 If you are interested in processing features for a new region other than Zambia and contributing these features to the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/), please see the GitHub repository [here](https://github.com/calebrob6/mosaiks-api) and create a pull request or issue. Additionally, you can contact the authors of the [MOSAIKS paper](https://www.nature.com/articles/s41467-021-24638-z) with questions about the process.
 
