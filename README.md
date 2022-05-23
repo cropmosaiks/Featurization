@@ -6,17 +6,35 @@ The featurization repository is the first repository a user should use in order 
 
 ## Datasets
 
+### Input 
+
+#### Satellites
+
 Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). These satellites were selected for two primary reasons:
 1. Ideal temporal coverage that overlaps with our crop yield data for the country of Zambia, which allows us to geospatially and temporally join satelite feature data with crop yields to execute a supervised machine learning approach (see the Modeling repository for more information)
 2. Existing satellite image archives in the MPC STAC, which allows users to import the images straight into the notebook with our existing
 
 These satellites provide options for different band combinations, spectral resolutions, and temporal cycles (meaning the time intervals between passes over the country of Zambia). Additionally, these satellites can be used in combination for the years in which they overlap.
 
+#### Geo-data
+
+Aditionally a user will be required to supply a gesopatial polygon in order to make a grid of points at 0.01 degree intervals in WGS84. In place of a polygon, a simple bounding box can also be used. In general, we have been conducting analysis within a single country and use the outline of that country to first create our grid of points. 
+
+More recently, our team has begun by first creating a grid of points that is premasked for cropland area in order to only retain the top 10% of points per district with crop land. These points are then uploaded to the `data` folder and used to match imagery in our featurization pipeline. 
+
+### Output
+
+The technique of [Random Kitchen Sinks](https://people.eecs.berkeley.edu/~brecht/kitchensinks.html#:~:text=Features%20are%20those%20pesky%20data,machine%20learning%20algorithms%20are%20trained.&text=Random%20features%20thus%20provide%20a,are%20very%20easy%20to%20implement.), also known as Random Convolutional Features (RCFs) are a way to encode geospatial locations with information based on the satellite image of that location. These features reflect information such as image colors and image textures. This information could be the delimination between colors (like the edge of a field, forest, or building that appears as a line from space), and combinations of colors such as blue next to green. In practice, the specific nature of what information a feature holds is not necessary for it to be useful. In fact, we generally do not investigate possiblities for what a feature might describe, but rather we use them, and the relationship between them to build a model which is capable of predicting what we are interested in. 
+
+With the feature data frame that is made from these notebooks, each row represents an image, and each feature represents a column. Each cell contains a numerical value for that feature at that location, which is statistically coorelated with the numerical value of crop yield data for that location during the modeling step (or other data provided by the user). Random Convolutional Features can either be created from the featurization repository in this organization, or downloaded from the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/). For more information about featurization and the MOSAIKS pipeline, please see [this paper by Rolf et al. 2021.](https://www.nature.com/articles/s41467-021-24638-z).
+
 ## Requirements 
 
 - Connection to STAC Collection provider such as MPC
 - Computer with Graphical Proccessing Unit (GPU)
+  - NVIDIA GPU with [CUDA](https://developer.nvidia.com/cuda-toolkit)
 - Familiarity with Python code 
+  - `PyTorch` in particular 
 
 ## Getting Started
 
@@ -79,17 +97,17 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 
 ## Future Work
 
-- Stack additional bands to Sentinel 2 in addition to visible spectrum (2,3,4). Examples include short wave infrared (12, 8, and 4), and red edge
+- Stack additional bands to Sentinel 2 in addition to visible spectrum (R, G, B) and near infrared (NIR). Examples include short wave infrared (SWIR16, SWIR22), and vegetation red edge (1, 2, and 3).
 - Utilizing notebook for 0.01 degree grid cells (an equal angle grid rather than equal area grid)
-- Increasing the cloud cover limit from 10% to 15% or more
-- Filtering cloud cover at the level of the resolution you are featurizing (0.01 degree) rather than at the image level. This would maintain more features (because less would be masked by clouds) and likely improve the model performance as executed in the Modeling repository)
+- Testing how the cloud cover limit effects results. Currently set to 10% and would recommend testing 15%, 20%, or more
+  - Alternatively, determining best method for using every least cloudy image for any given month and only throwing away 1 km points that do not meet a cloud thresshold. In this way, more whole images may be retained, and fewer points would be lost to cloud cover.  
 - Producing features for regions other than Zambia, such as Tanzania and Nigeria, as those are other countries in sub-Saharan Africa with crop yield data (While the CropMOSAIKS team has access to this crop data, Tanzania and Nigeria were out of the scope. With more time and features for these countries, the CropMOSAIKS team aims to eventually model crop yields for regions beyond Zambia.)
 
 This Featurization repository is designed to guide a user through processing satellite images collected by Landsat 8 and Sentinel 2 on the STAC API. Code is tailored to run on Planetary Computer. Alternatively, a user can download pre-processed feature files from the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/) which hosts features collected from a private satellite. The features available on the MOSAIKS API are global and therefore not limited to the country of Zambia. In order to query features from this website, a user should upload a csv of latitude and longitude points (or create a bounding box) and the features will be processed and sent to the user to download. In order to merge these features with other data of interest and execute future analysis, please see the [Modeling repository](https://github.com/cropmosaiks/Modeling). 
 
 ## Contributing
 
-This project was completed on June 9th, 2022, but suggestions for improvements to the code or documentation is welcome and encouraged. Please submit questions, comments, or code via issues or pull requests on either of the repositories. To correspond with the data scientists who produced these materials that extend the MOSAIKS approach, please see their personal GitHub accounts at the bottom of the organization's README and feel free to contact them via email.
+The capstone project was completed on June 9th, 2022. Some team members will be continuing work in this field and the repositories are likely to stay active for some time to come. Suggestions for improvements to the code or documentation is welcome and encouraged. Please submit questions, comments, or code via issues or pull requests on either of the repositories. To correspond with the data scientists who produced these materials that extend the MOSAIKS approach, please see their personal GitHub accounts at the bottom of the organization's README and feel free to contact them via email.
 
 If you are interested in processing features for a new region other than Zambia and contributing these features to the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/), please see the GitHub repository [here](https://github.com/calebrob6/mosaiks-api) and create a pull request or issue. Additionally, you can contact the authors of the [MOSAIKS paper](https://www.nature.com/articles/s41467-021-24638-z) with questions about the process.
 
