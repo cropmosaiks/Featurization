@@ -30,7 +30,8 @@ With the feature data frame that is made from these notebooks, each row represen
 
 ## Requirements 
 
-- Connection to STAC Collection provider such as MPC
+- Connection to STAC Collection provider such as Microsoft Planetary Computer (MPC)
+  - If using MPC see [environment docs](https://github.com/microsoft/PlanetaryComputerDataCatalog/blob/develop/docs/overview/environment.md) for further direction
 - Computer with Graphical Proccessing Unit (GPU)
   - NVIDIA GPU with [CUDA](https://developer.nvidia.com/cuda-toolkit)
 - Familiarity with Python code 
