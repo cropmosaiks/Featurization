@@ -95,6 +95,8 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 - MPC Hub RAM
   - Most runs will push the given memory to its limit, and sometimes past
   - We have tried to implement aggressive memory recovery through deletion of objects and garbage collection 
+- MPC GPU node limit. The MPC Hub provides free GPU access but access is limited. The GPU nodes are first come, first serve. It can be frustrating to access The MPC Hub when all nodes are being consumed by other users. 
+  - There are many ways to do [compute with MPC data](https://planetarycomputer.microsoft.com/docs/concepts/computing/) and it may be neccessary to use alternate options 
 
 ## Future Work
 
