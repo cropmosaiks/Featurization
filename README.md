@@ -102,7 +102,7 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 
 ## Future Work
 
-There are many expansions and future research that could be contributed to this project of expanding the MOSAIKS approach. A few of these ideas include:
+There are many expansions and future research that could be contributed to this project of extending the MOSAIKS approach. A few of these ideas include:
 
 - Testing how the cloud cover limit effects results. Currently set to 10% and would recommend testing 15%, 20%, or more
   - Alternatively, determining best method for using every least cloudy image for any given month and only throwing away 1 km points that do not meet a cloud thresshold. In this way, more whole images may be retained, and fewer points would be lost to cloud cover.  
