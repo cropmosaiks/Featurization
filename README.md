@@ -68,8 +68,8 @@ With MPC access as described above, a user has several options to begin creating
   - Naming conventions are unique to each satellites
 - Select a time period to featurize
   - Constrained by satellite mission timeline:
-    - (temporal coverage = February 2013 - present)
-    - (temporal coverage = June 2015 - present)
+    - Landsat 8: temporal coverage = February 2013 - present
+    - Sentinel 2: temporal coverage = June 2015 - present
 - Run the notebook in full
   - The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
     - For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
