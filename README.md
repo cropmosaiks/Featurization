@@ -65,7 +65,7 @@ With MPC access as described above, a user has several options to begin creating
   - Defaults to 1000, which has resulted in excellent model performance for our project's goals
   - Increasing the number of features increases computational cost and the time it takes to execute the notebook
 - Select the relevant bands 
-  - Naming conventions are unique to each satellites)
+  - Naming conventions are unique to each satellites
 - Select a time period to featurize
   - Constrained by satellite mission timeline:
     - (temporal coverage = February 2013 - present)
