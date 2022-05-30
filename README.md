@@ -2,7 +2,9 @@
 
 ## Purpose
 
-The featurization repository is the first repository a user should use in order to execute the [MOSAIKS approach](https://www.nature.com/articles/s41467-021-24638-z). This repository contains code for proccessing satellite imagery by encoding with random convolutional features. The methodology and workflow requires connection to a [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/) such as [Microsoft's Planetary Computer (MPC)](https://github.com/microsoft/PlanetaryComputer). The base of the code found in this repostiory was originally created by the team at MPC and is hosted as a [tutorial](https://github.com/microsoft/PlanetaryComputerExamples/blob/main/tutorials/mosaiks.ipynb) on MPC Hub. Our team has adapted and extended this codebase to featurize imagery over time (monthly) and to include a larger portion of the electromagnetic spectrum (i.e., satellite bands). 
+The featurization repository is the first repository a user should use in order to execute the [MOSAIKS approach](https://www.nature.com/articles/s41467-021-24638-z). It is designed to guide a user through processing satellite images collected by Landsat 8 and Sentinel 2 on the STAC API. Code is tailored to run on Planetary Computer. This repository contains code for proccessing satellite imagery by encoding with random convolutional features. The methodology and workflow requires connection to a [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/) such as [Microsoft's Planetary Computer (MPC)](https://github.com/microsoft/PlanetaryComputer). The base of the code found in this repostiory was originally created by the team at MPC and is hosted as a [tutorial](https://github.com/microsoft/PlanetaryComputerExamples/blob/main/tutorials/mosaiks.ipynb) on MPC Hub. Our team has adapted and extended this codebase to featurize imagery over time (monthly) and to include a larger portion of the electromagnetic spectrum (i.e., satellite bands).
+
+Alternatively, instead of processing satellite images, a user can download pre-processed feature files from the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/) which hosts features collected from a private satellite. The features available on the MOSAIKS API are global and therefore not limited to the country of Zambia. In order to query features from this website, a user should upload a csv of latitude and longitude points (or create a bounding box) and the features will be processed and sent to the user to download. In order to merge these features with other data of interest and execute future analysis, please see the [Modeling repository](https://github.com/cropmosaiks/Modeling).
 
 ## Datasets
 
@@ -82,12 +84,12 @@ All of the above options can be configured in our featurization notebook, `rc_fe
 4. Use a custom Dataloader, which uses our Dataset, to feed our model imagery and save the corresponding features
 5. Loop through the year and month combinations selected by the user to output feature files in a compressed feather file format
 
-There is an optional `landcover.ipynb` notebook that can be used to return various land cover land use percentages at a given point (i.e., the same points which you are interested in featurizing) such as cropped area, forrest cover, or built areas. This notebook uses the [10 meter land cover](https://planetarycomputer.microsoft.com/dataset/group/io-land-cover) dataset. This notebook is underdevelopment and has a known bug that will return NULL values around the UTM zone delineations. It is not recommended to use this until this bug can be fixed.
+There is an optional `landcover.ipynb` notebook that can be used to return various land cover land use percentages at a given point (i.e., the same points which you are interested in featurizing) such as cropped area, forrest cover, or built areas. This notebook uses the [10 meter land cover](https://planetarycomputer.microsoft.com/dataset/group/io-land-cover) dataset. This notebook is under development and has a known bug that will return NULL values around the UTM zone delineations. It is not recommended to use this until this bug can be fixed.
 
 ## Constraints
 
 - MPC Hub persistent storage 
-  - Limited to 15 gigbytes (with access to large temporary storage: ~200 gigbytes within a single session)
+  - Limited to 15 gigabytes (with access to large temporary storage: ~200 gigabytes within a single session)
   - Exceeding storage limits can cause your environment to not load on the next session
   - Download output files and delete from the hub regularly
 - MPC compute power
@@ -100,13 +102,11 @@ There is an optional `landcover.ipynb` notebook that can be used to return vario
 
 ## Future Work
 
-- Stack additional bands to Sentinel 2 in addition to visible spectrum (R, G, B) and near infrared (NIR). Examples include short wave infrared (SWIR16, SWIR22), and vegetation red edge (1, 2, and 3).
-- Utilizing notebook for 0.01 degree grid cells (an equal angle grid rather than equal area grid)
 - Testing how the cloud cover limit effects results. Currently set to 10% and would recommend testing 15%, 20%, or more
   - Alternatively, determining best method for using every least cloudy image for any given month and only throwing away 1 km points that do not meet a cloud thresshold. In this way, more whole images may be retained, and fewer points would be lost to cloud cover.  
 - Producing features for regions other than Zambia, such as Tanzania and Nigeria, as those are other countries in sub-Saharan Africa with crop yield data (While the CropMOSAIKS team has access to this crop data, Tanzania and Nigeria were out of the scope. With more time and features for these countries, the CropMOSAIKS team aims to eventually model crop yields for regions beyond Zambia.)
 
-This Featurization repository is designed to guide a user through processing satellite images collected by Landsat 8 and Sentinel 2 on the STAC API. Code is tailored to run on Planetary Computer. Alternatively, a user can download pre-processed feature files from the [MOSAIKS API](https://nadar.gspp.berkeley.edu/home/index/?next=/portal/index/) which hosts features collected from a private satellite. The features available on the MOSAIKS API are global and therefore not limited to the country of Zambia. In order to query features from this website, a user should upload a csv of latitude and longitude points (or create a bounding box) and the features will be processed and sent to the user to download. In order to merge these features with other data of interest and execute future analysis, please see the [Modeling repository](https://github.com/cropmosaiks/Modeling). 
+ 
 
 ## Contributing
 
