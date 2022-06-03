@@ -104,17 +104,38 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
 
 With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). An overview of the steps are as follows: 
 
+### Step 1 - Create a grid of points
+
+Use the `dense_grid.ipynb` to execute the following steps:
+
 - Create a uniform grid of points over the region of interest, or load a file containg the pre-produced latitude and longitude points to featurize 
-  - Grid creation executed directly in the notebook:
-    - User selects a country or region and a grid will be created
-    - User can supply geometry or a country code can be specified to use the `geopandas` shapefiles
-    - For gridding the country of Zambia specifically, a user has two options: `equal angle` cells versus `equal area` grid cells
-      - `equal angle` grids are produced using the latitude/longitude geodetic coordinate reference system, EPSG 4326, which is based on Earth's center of mass
-        - results in each point representing a 0.01 by 0.01 degree grid cell that will be featurized 
-        - This is roughly 1 km<sup>2</sup> (exact area varies by geographic location)
-        - This means a pre-processed, user-supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
-      - `equal area` grids are produced using the local coordinate reference system for the region of interest
-        - The local EPSG for the country of Zambia is the defualt, but the relevant EPSG for another region of interest may be supplied by the user 
+  - User selects a country or region and a grid will be created
+  - User can supply geometry or a country code can be specified to use the `geopandas` shapefiles
+  - For gridding the country of Zambia specifically, a user has two options: `equal angle` cells versus `equal area` grid cells
+    - `equal angle` grids are produced using the latitude/longitude geodetic coordinate reference system, EPSG 4326, which is based on Earth's center of mass
+      - results in each point representing a 0.01 by 0.01 degree grid cell that will be featurized 
+      - This is roughly 1 km<sup>2</sup> (exact area varies by geographic location)
+      - This means a pre-processed, user-supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
+    - `equal area` grids are produced using the local coordinate reference system for the region of interest
+      - The local EPSG for the country of Zambia is the defualt, but the relevant EPSG for another region of interest may be supplied by the user 
+      - 
+### Step 2 - Select a featurization notebook
+
+The featurization notebooks are:
+
+- `rcf_multiband.ipynb` 
+  - For use with the `landsat-c2-l2` satellite collection or `sentinel-2-l2a`  
+- `Sentinel_2_RGB.ipynb`
+  - For use with `sentinel-2-l2a` in only the visible spectrum.
+  - MUCH faster than other options 
+- `s2_l8_multiband.ipynb` 
+  -  For use with the `landsat-8-c2-l2` satellite collection or `sentinel-2-l2a`  
+  -  `landsat-8-c2-l2` is now deprecated in favor of the `landsat-c2-l2` collection
+
+### Step 3 - Select Options
+
+Options include selecting a satellite collection, the number of features to produce, the spectral bands, select the time period. These options are selected in the `rcf_multiband.ipynb`, `Sentinel_2_RGB.ipynb`, or `s2_l8_multiband.ipynb` notebooks. 
+
 - Select a satellite
   - `landsat-8-c2-l2`
   - `sentinel-2-l2a`
@@ -127,11 +148,15 @@ With MPC access as described above, a user has several options to begin creating
   - Constrained by satellite mission timeline:
     - Landsat 8: temporal coverage = February 2013 - present
     - Sentinel 2: temporal coverage = June 2015 - present
-- Run the notebook in full
-  - The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
-    - For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
 
-All of the above options can be configured in our featurization notebook, `rc_featurization.ipynb`, the primary notebook of this repository. Following these selections, the notebook can be run in full with the resulting workflow of:
+### Step 3 - Run the notebook in full
+
+- The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
+  - For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
+
+### Generalized notebook workflow
+
+Following the above selections, the notebook can be run in full with the resulting workflow of:
 
 1. Find an appropriate STAC item for each point (in parallel, using a spatially partitioned dataset of points)
 2. Feed the points and STAC items to a custom Dataset that can read imagery given a point and the URL of a overlapping satellite scene
