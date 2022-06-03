@@ -14,7 +14,7 @@ Alternatively, instead of processing satellite images, a user can download pre-p
 
 Currently this code is adapted to use two satellites, [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-8-c2-l2) and [Sentinel 2](https://planetarycomputer.microsoft.com/dataset/sentinel-2-l2a). These satellites were selected for two primary reasons:
 1. Ideal temporal coverage that overlaps with our crop yield data for the country of Zambia, which allows us to geospatially and temporally join satelite feature data with crop yields to execute a supervised machine learning approach (see the Modeling repository for more information)
-2. Existing satellite image archives in the MPC STAC, which allows users to import the images straight into the notebook with our existing
+2. They are public satellite image archives readily available on the MPC [data catalog](https://planetarycomputer.microsoft.com/catalog). The existing MOSAIKS pipeline uses private satellite imagery
 
 These satellites provide options for different band combinations, spectral resolutions, and temporal cycles (meaning the time intervals between passes over the country of Zambia). Additionally, these satellites can be used in combination for the years in which they overlap.
 
