@@ -120,7 +120,7 @@ Use the `dense_grid.ipynb` to execute the following steps:
       - This means a pre-processed, user-supplied file should have points with a minimum distance of 0.01 degrees to avoid overlap
     - `equal area` grids are produced using the local coordinate reference system for the region of interest
       - The local EPSG for the country of Zambia is the defualt, but the relevant EPSG for another region of interest may be supplied by the user 
-      - 
+
 ### Step 2 - Select a featurization notebook
 
 The featurization notebooks are:
@@ -153,12 +153,13 @@ Options include selecting a satellite collection, the number of features to prod
 
 ### Step 3 - Run the notebook in full
 
-- The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
-  - For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
+The notebook is configured to account for all of your desired inputs, but compute power may limit the extent of what is possible based on selected options
 
-### Generalized notebook workflow
+- For example, trying to featurize too many points in a single run may not only be slow, it may crash the kernel or cause a timeout or disconnect error
 
-Following the above selections, the notebook can be run in full with the resulting workflow of:
+### How the notebooks work
+
+The general notebook workflow:
 
 1. Find an appropriate STAC item for each point (in parallel, using a spatially partitioned dataset of points)
 2. Feed the points and STAC items to a custom Dataset that can read imagery given a point and the URL of a overlapping satellite scene
