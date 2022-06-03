@@ -67,6 +67,39 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
   
 </details>
 
+<details>
+  <summary> 
+    <code class="notranslate">
+      s2_l8_multiband.ipynb
+    </code>
+  </summary>
+  
+  Details of NB s2_l8_multiband
+  
+</details>
+
+<details>
+  <summary> 
+    <code class="notranslate">
+      land_cover_9_class.ipynb
+    </code>
+  </summary>
+  
+  Details of NB land_cover_9_class
+  
+</details>
+
+<details>
+  <summary> 
+    <code class="notranslate">
+      Sentinel_2_RGB.ipynb
+    </code>
+  </summary>
+  
+  Details of NB Sentinel_2_RGB.ipynb
+  
+</details>
+
 ## Generalized Steps  
 
 With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). An overview of the steps are as follows: 
