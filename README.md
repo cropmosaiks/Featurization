@@ -52,7 +52,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
     <code class="notranslate">dense_grid.ipynb</code>
   </summary>
   <br>
-  Details of NB [dense_grid.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/dense_grid.ipynb)
+  <a href="https://github.com/cropmosaiks/Featurization/blob/main/dense_grid.ipynb">dense_grid.ipynb</a>
   
 </details>
 
@@ -63,7 +63,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
     </code>
   </summary>
   <br>
-  Details of NB [rcf_multiband.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/rcf_multiband.ipynb)
+  <a href="https://github.com/cropmosaiks/Featurization/blob/main/rcf_multiband.ipynb">rcf_multiband.ipynb</a>
   
 </details>
 
@@ -74,7 +74,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
     </code>
   </summary>
   <br>
-  Details of NB [s2_l8_multiband.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/s2_l8_multiband.ipynb)
+  <a href="https://github.com/cropmosaiks/Featurization/blob/main/s2_l8_multiband.ipynb">s2_l8_multiband.ipynb</a>
   
 </details>
 
@@ -84,9 +84,11 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
       land_cover_9_class.ipynb
     </code>
   </summary>
-  <br>
-  Details of NB [land_cover_9_class.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/land_cover_9_class.ipynb)
+  <br><p>
+  <a href="https://github.com/cropmosaiks/Featurization/blob/main/land_cover_9_class.ipynb">land_cover_9_class.ipynb</a>
   
+  There is an optional `landcover.ipynb` notebook that can be used to return various land cover land use percentages at a given point (i.e., the same points which you are interested in featurizing) such as cropped area, forrest cover, or built areas. This notebook uses the [10 meter land cover](https://planetarycomputer.microsoft.com/dataset/group/io-land-cover) dataset. This notebook is under development and has a known bug that will return NULL values around the UTM zone delineations. It is not recommended to use this until this bug can be fixed.
+  </p>
 </details>
 
 <details>
@@ -96,7 +98,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
     </code>
   </summary>
   <br>
-  Details of NB [Sentinel_2_RGB.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/Sentinel_2_RGB.ipynb)
+  <a href="https://github.com/cropmosaiks/Featurization/blob/main/Sentinel_2_RGB.ipynb">Sentinel_2_RGB.ipynb</a>
   
 </details>
 
@@ -163,8 +165,6 @@ Following the above selections, the notebook can be run in full with the resulti
 3. Use `stackstac` to stack the various bands of interest
 4. Use a custom Dataloader, which uses our Dataset, to feed our model imagery and save the corresponding features
 5. Loop through the year and month combinations selected by the user to output feature files in a compressed feather file format
-
-There is an optional `landcover.ipynb` notebook that can be used to return various land cover land use percentages at a given point (i.e., the same points which you are interested in featurizing) such as cropped area, forrest cover, or built areas. This notebook uses the [10 meter land cover](https://planetarycomputer.microsoft.com/dataset/group/io-land-cover) dataset. This notebook is under development and has a known bug that will return NULL values around the UTM zone delineations. It is not recommended to use this until this bug can be fixed.
 
 ## Constraints
 
