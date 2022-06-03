@@ -51,7 +51,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
   <summary> 
     <code class="notranslate">dense_grid.ipynb</code>
   </summary>
-  
+  <br>
   Details of NB [dense_grid.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/dense_grid.ipynb)
   
 </details>
@@ -62,7 +62,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
       rcf_multiband.ipynb
     </code>
   </summary>
-  
+  <br>
   Details of NB [rcf_multiband.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/rcf_multiband.ipynb)
   
 </details>
@@ -73,7 +73,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
       s2_l8_multiband.ipynb
     </code>
   </summary>
-  
+  <br>
   Details of NB [s2_l8_multiband.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/s2_l8_multiband.ipynb)
   
 </details>
@@ -84,7 +84,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
       land_cover_9_class.ipynb
     </code>
   </summary>
-  
+  <br>
   Details of NB [land_cover_9_class.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/land_cover_9_class.ipynb)
   
 </details>
@@ -95,7 +95,7 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
       Sentinel_2_RGB.ipynb
     </code>
   </summary>
-  
+  <br>
   Details of NB [Sentinel_2_RGB.ipynb](https://github.com/cropmosaiks/Featurization/blob/main/Sentinel_2_RGB.ipynb)
   
 </details>
