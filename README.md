@@ -47,6 +47,28 @@ This repository can be cloned into the root directory of the MPC Hub. Within the
 
 ## Notebooks
 
+<details>
+  <summary> 
+    <code class="notranslate">dense_grid.ipynb</code>
+  </summary>
+  
+  Details of NB dense_grid
+  
+</details>
+
+<details>
+  <summary> 
+    <code class="notranslate">
+      rcf_multiband.ipynb
+    </code>
+  </summary>
+  
+  Details of NB rcf_multiband
+  
+</details>
+
+## Generalized Steps  
+
 With MPC access as described above, a user has several options to begin creating their Random Convolutional Features (RCFs). An overview of the steps are as follows: 
 
 - Create a uniform grid of points over the region of interest, or load a file containg the pre-produced latitude and longitude points to featurize 
